@@ -4,14 +4,27 @@ import React, { useEffect, useState } from "react";
 
 function App() {
 
-const [displayValue, setDisplayValue] = useState(0)
+const [displayPrimaryValue, setDisplayPrimaryValue] = useState(0)
+const [displaySecondaryValue, setDisplaySecondaryValue] = useState('')
 
 const handleClearClick = () => {
-  setDisplayValue(0)
+  setDisplayPrimaryValue(0)
+  setDisplaySecondaryValue('')
 }
 
 const handleNumberClick = (event) => {
-  setDisplayValue(event.target.value)
+  const numberClicked = event.target.value
+  const newValue = displayPrimaryValue === 0 ? numberClicked : displayPrimaryValue + numberClicked
+  const secondaryValue = displaySecondaryValue + numberClicked
+  setDisplayPrimaryValue(eval(secondaryValue))
+  setDisplaySecondaryValue(secondaryValue)
+}
+
+const handleOperatorClick = (event) => {
+  const operatorClicked = event.target.value
+
+  setDisplaySecondaryValue(displaySecondaryValue + operatorClicked)
+  
 }
 
   return (
@@ -28,13 +41,14 @@ const handleNumberClick = (event) => {
       <button id="seven" onClick={handleNumberClick} value="7">7</button>
       <button id="eight" onClick={handleNumberClick} value="8">8</button>
       <button id="nine" onClick={handleNumberClick} value="9">9</button>
-      <button id="add">+</button>
-      <button id="subtract">-</button>
-      <button id="multiply">X</button>
-      <button id="divide">/</button>
+      <button id="add" onClick={handleOperatorClick} value="+">+</button>
+      <button id="subtract" onClick={handleOperatorClick} value="-">-</button>
+      <button id="multiply" onClick={handleOperatorClick} value="*">X</button>
+      <button id="divide" onClick={handleOperatorClick} value="/">/</button>
       <button id="decimal">.</button>
       <button id="clear" onClick={handleClearClick}>AC</button>
-      <div id="display">{displayValue}</div>
+      <div id="displaySecondary">{displaySecondaryValue}</div>
+      <div id="display">{displayPrimaryValue}</div>
 
 
 </div>

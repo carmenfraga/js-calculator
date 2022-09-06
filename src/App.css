@@ -1,4 +1,59 @@
 .App {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
   text-align: center;
+  font-weight: bold;
 }
 
+#calculator-box {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  width: 20%;
+}
+
+#displaySecondary {
+  color: rgb(188, 147, 69);
+  grid-column-start: 1;
+  grid-column-end: 5;
+  grid-row-start: 1;
+  text-align: end;
+}
+
+#display {
+  color: white;
+  font-size: 20px;
+  grid-column-start: 1;
+  grid-column-end: 5;
+  grid-row-start: 2;
+  text-align: end;
+}
+
+button {
+  background-color: beige;
+  height: 50px;
+}
+
+#clear {
+  background-color: rgb(120, 162, 120);
+}
+
+.operator-button {
+  background-color: rgb(255, 232, 189);
+}
+
+#equals {
+  background-color: rgb(188, 147, 69);
+  grid-row-start: 5;
+  grid-row-end: 8;
+  grid-column-start: 4;
+  height: auto;
+}
+
+.display {
+  background-color: black;
+}
+
+#zero {
+  grid-column: span 3;
+}
